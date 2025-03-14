@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Звук при запуске</title>
+    <style>
+        /* Скрываем кнопку */
+        #playButton {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Добро пожаловать на сайт!</h1>
+    <p>Звук воспроизводится автоматически при загрузке страницы.</p>
+
+    <!-- Кнопка для взаимодействия с пользователем -->
+    <button id="playButton">Нажмите, чтобы начать</button>
+
+    <!-- Аудио -->
+    <audio id="autoplayAudio">
+        <source src="https://www.myinstants.com/media/sounds/lingan-guli-wacha.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает элемент audio.
+    </audio>
+
+    <script>
+        // Находим элементы
+        const playButton = document.getElementById('playButton');
+        const audio = document.getElementById('autoplayAudio');
+
+        // Симулируем клик по кнопке при загрузке страницы
+        window.addEventListener('load', () => {
+            playButton.click(); // Программно "нажимаем" на кнопку
+        });
+
+        // Воспроизводим звук после клика
+        playButton.addEventListener('click', () => {
+            audio.play().then(() => {
+                console.log('Звук воспроизводится!');
+            }).catch((error) => {
+                console.error('Ошибка воспроизведения звука:', error);
+            });
+        });
+    </script>
+</body>
+</html>
